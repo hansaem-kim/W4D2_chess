@@ -1,11 +1,14 @@
-class Pawn < piece
+require_relative "piece.rb"
+
+class Pawn < Piece
     def initialize(color, board, pos)
         super
     end
 
     def moves
-        if @color == "white"
-            pos[0] = pos[0]+1
+        # if @color == "white"
+        #     pos[0] = pos[0]+1
+        # end
     end
 
     def at_start_row?

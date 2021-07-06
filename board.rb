@@ -1,3 +1,5 @@
+require_relative "piece"
+
 class Board
 
     #white is on top
@@ -15,10 +17,27 @@ class Board
 
     end
 
-    def valid_move?(end_pos)
 
-        
-    end
+
+    def populate
+        @board.each_with_index do |row, i|
+            row.each_with_index do |col, j|
+                if i == 1 
+                    @board[i][j] = Pawn.new('white', self, [i,j])
+                elsif i == 6 
+                    @board[i][j] = Pawn.new('black', self, [i,j])
+                elsif i == 3 || i == 4 || i == 5 || i == 6
+                    @board[i][j] = NullPiece.instance
+                end
+            end
+        end
+        @board[0][0] = Rook.new('white', @board, [0,0])
+        @board[0][7] = Rook.new('white', @board, [0,7])
+        @board[7][7] = Rook.new('black', @board, [7,7])
+        @board[7][0] = Rook.new('black', @board, [7,0])
+
+        @board[0][1] = Knight.new('white', @board, [0,1])
+    end     
 
     def [](pos)
         row, col = pos
