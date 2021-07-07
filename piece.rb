@@ -1,20 +1,15 @@
-require_relative "pieces"
+require_relative 'board'
 
 class Piece
-
-<<<<<<< HEAD
-    def initialize(color, board, position)
-        @color = color
-        @board = board
-        @position = position
-    end
-
-    
-=======
+    attr_reader :pos, :color, :board
     def initialize(color, board, pos)
         @color = color
         @board = board
         @pos = pos
+    end
+
+    def inspect
+        symbol
     end
 
     def valid_move?(pos)
@@ -27,8 +22,8 @@ class Piece
         false
     end
 
-    def to_s
-        symbol
+    def symbol
+        # symbol
     end
 
     private
@@ -37,5 +32,4 @@ class Piece
     end
     
 
->>>>>>> 3c5ac917d7c79a7d3281c778f9508f8c1952dc24
 end

@@ -1,4 +1,3 @@
-require_relative "pieces"
 
 module Slideable
 
@@ -60,7 +59,7 @@ module Slideable
             col += dy
             pos = [row, col]
 
-            break if !self.board.inside_board? || self.board[pos].color == self.color
+            break if !self.board.inside_board?(pos) || self.board[pos].color == self.color
 
             collect_moves << pos if self.board[pos].color != self.color
 

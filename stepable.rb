@@ -1,13 +1,5 @@
-require_relative "pieces"
-
 module Stepable
     def moves
-<<<<<<< HEAD
-        
-    end
-
-    def move_diffs
-=======
         collect_moves = []
         move_diffs.each do |dir|
             dx, dy = dir
@@ -16,7 +8,6 @@ module Stepable
                 collect_moves << current_pos
             end
         end
->>>>>>> 3c5ac917d7c79a7d3281c778f9508f8c1952dc24
     end
   
     private

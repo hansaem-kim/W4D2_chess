@@ -1,13 +1,13 @@
 require_relative "pieces"
 
 class Board
-
+    attr_accessor :board
     #white is on top
     #black is on bottom
     
     def initialize
         @board = Array.new(8) {Array.new(8)}
-
+        populate
     end
 
 
@@ -24,6 +24,7 @@ class Board
         self.white_pawn_generate
         self.white_piece_generate
         self.black_piece_generate
+        self.null_generate
     end     
 
     def white_piece_generate
@@ -48,10 +49,17 @@ class Board
 
     def white_pawn_generate
         (0..7).each do |i|
-            @board[1][i] = Pawn.new('black', self, [1,i])
+            @board[1][i] = Pawn.new('white', self, [1,i])
         end
     end
 
+    def null_generate
+        (2..5).each do |i|
+            (0..7).each do |j|
+                @board[i][j] = NullPiece.instance
+            end
+        end
+    end
 
     def [](pos)
         row, col = pos
