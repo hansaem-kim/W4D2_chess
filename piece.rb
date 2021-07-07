@@ -7,7 +7,19 @@ require_relative "king"
 
 class Piece
 
-    def initialize(name)
-        @name = name 
+    def initialize(color, board, pos)
+        @color = color
+        @board = board
+        @pos = pos
     end
+
+    def valid_move?(pos)
+        return false if self.color == @board[pos].color
+        true   
+    end
+
+    def [](pos)
+
+    
+
 end
