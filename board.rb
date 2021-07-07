@@ -13,8 +13,8 @@ class Board
 
     def move_piece(start_pos, end_pos)
         raise "There is no piece" if self[start_pos].is_a?(NullPiece)
-
-
+        self[end_pos] = self[start_pos] 
+        self[start_pos] = NullPiece.instance
     end
 
 

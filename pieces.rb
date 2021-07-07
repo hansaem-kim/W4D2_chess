@@ -8,7 +8,7 @@ require_relative "null_piece"
 require_relative "slideable"
 require_relative "stepable"
 require_relative "piece"
-
+require "colorize"
 
 
 

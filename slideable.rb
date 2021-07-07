@@ -39,7 +39,7 @@ module Slideable
     end
   
   
-    private
+    # protected
   
     def move_dirs
       # subclass implements this
@@ -52,19 +52,18 @@ module Slideable
     def grow_unblocked_moves_in_dir(dx, dy)
       collect_moves = []
       
-      row, col = self.pos
+      row, col = pos
 
         while true
             row += dx
             col += dy
-            pos = [row, col]
+            current_pos = [row, col]
 
-            break if !self.board.inside_board?(pos) || self.board[pos].color == self.color
+            break if !@board.inside_board?(pos)
 
-            collect_moves << pos if self.board[pos].color != self.color
+            collect_moves << current_pos if @board[current_pos].color != self.color
 
-            break if (self.board[pos].color == "white" && self.color == "black") || (self.board[pos].color == "black" && self.color == "white")
-
+            # break if (@board[pos].color == "white" && self.color == "black") || (@board[pos].color == "black" && self.color == "white")
         end
             
         collect_moves
