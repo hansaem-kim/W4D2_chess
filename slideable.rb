@@ -1,3 +1,5 @@
+require_relative "pieces"
+
 module Slideable
 
 
@@ -26,15 +28,15 @@ module Slideable
   
     # should return an array of places a Piece can move to
     def moves
-      # create array to collect moves
-  
-      # iterate over each of the directions in which a slideable piece can move
-        # use the Piece subclass' `#move_dirs` method to get this info
-        # for each direction, collect all possible moves in that direction
-          # and add them to your moves array 
-          # (use the `grow_unblocked_moves_in_dir` helper method)
-  
-      # return the final array of moves (containing all possible moves in all directions)
+        collect_moves = []
+
+        move_dirs.each do |dir|
+            dx, dy = dir
+            collect_moves += grow_unblocked_moves_in_dir(dx, dy)
+        end
+
+        collect_moves
+
     end
   
   
@@ -58,13 +60,11 @@ module Slideable
             col += dy
             pos = [row, col]
 
-            break unless self.board.inside_board?
-
-            collect_moves << pos if self.board[pos] == NullPiece.instance
+            break if !self.board.inside_board? || self.board[pos].color == self.color
 
             collect_moves << pos if self.board[pos].color != self.color
-        
-            break if self.board[pos] != NullPiece.instance
+
+            break if (self.board[pos].color == "white" && self.color == "black") || (self.board[pos].color == "black" && self.color == "white")
 
         end
             

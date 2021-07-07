@@ -1,7 +1,11 @@
-require_relative "piece"
-require_relative "stepable"
+require_relative "pieces"
+
 class King < Piece
     include Stepable
+
+    def symbol
+        '♚'.colorize(color)
+    end
     
     def move_diffs
         [

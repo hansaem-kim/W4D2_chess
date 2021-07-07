@@ -1,9 +1,4 @@
-require_relative "pawn"
-require_relative "knight"
-require_relative "bishop"
-require_relative "rook"
-require_relative "queen"
-require_relative "king"
+require_relative "pieces"
 
 class Piece
 
@@ -18,8 +13,19 @@ class Piece
         true   
     end
 
-    def [](pos)
+    def empty?
+        return true if self.is_a?(NullPiece)
+        false
+    end
 
+    def to_s
+        symbol
+    end
+
+    private
+    def move_into_check?(end_pos)
+        
+    end
     
 
 end
